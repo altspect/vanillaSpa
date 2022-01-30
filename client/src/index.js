@@ -1,8 +1,12 @@
 import Dashboard from './pages/Dashboard.js';
 import Posts from './pages/Posts.js';
+import Post from './pages/Post.js';
 import Settings from './pages/Settings.js';
+import NotFound from './pages/NotFound.js';
 
-const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
+const pathToRegex = path => {
+  return new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
+}
 
 const getParams = match => {
   const values = match.result.slice(1);
@@ -15,10 +19,11 @@ const getParams = match => {
 
 const router = async () => {
   const routes = [
+    { path: '/notfound', view: NotFound },
     { path: '/', view: Dashboard },
     { path: '/posts', view: Posts },
-    { path: '/posts/id' },
-    { path: '/settings', view: Settings }
+    { path: '/post', view: Post },
+    { path: '/settings', view: Settings },
   ];
 
   const potentialMatches = routes.map(route => {
@@ -34,7 +39,7 @@ const router = async () => {
     match = {
       route: routes[0],
       result: [location.pathname]
-    }
+    };
   }
 
   const view = new match.route.view(getParams(match));
