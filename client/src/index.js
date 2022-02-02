@@ -14,7 +14,7 @@ const getParams = match => {
 
   return Object.fromEntries(keys.map((key, i) => {
     return [key, values[i]];
-  }))
+  }));
 }
 
 const router = async () => {
@@ -22,7 +22,7 @@ const router = async () => {
     { path: '/notfound', view: NotFound },
     { path: '/', view: Dashboard },
     { path: '/posts', view: Posts },
-    { path: '/post', view: Post },
+    { path: '/post/:id', view: Post },
     { path: '/settings', view: Settings },
   ];
 

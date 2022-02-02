@@ -6,6 +6,11 @@ export default class extends AbstractView {
     this.setTitle('Post');
   }
 
+  componentMounted() {
+    super.componentMounted();
+    console.log('component mounted');
+  }
+
   async render() {
     return `
       <h2>Post</h2>

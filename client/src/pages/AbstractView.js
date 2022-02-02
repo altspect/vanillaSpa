@@ -3,6 +3,10 @@ export default class {
     this.params = params;
   }
 
+  componentMounted() {}
+
+  componentUnmounted() {}
+
   setTitle(title) {
     document.title = title;
   }
